@@ -1,12 +1,12 @@
-# 🧾 Product Price Prediction from Marketplace Listings
+#  Product Price Prediction from Marketplace Listings
 
 This project focuses on building a machine learning model to predict the sale price of online product listings using structured and unstructured data provided by sellers. Accurately estimating product prices is a challenging task influenced by subtle differences in product descriptions, conditions, and categories—particularly in competitive online marketplaces.
 
-## 🎯 Objective
+##  Objective
 
 The goal is to predict the final sale price of items based on features such as item condition, category, brand name, shipping information, and text descriptions. This task simulates a real-world application faced by e-commerce platforms when setting or suggesting optimal prices.
 
-## 📦 Dataset
+##  Dataset
 
 The dataset consists of two tab-delimited files:
 
@@ -22,19 +22,20 @@ Each listing includes:
 - `shipping`: Indicates who pays for shipping (0 = buyer, 1 = seller).
 - `item_description`: Detailed product description (also cleaned of prices).
 
-## 🧠 Modeling
+##  Modeling
 
 The predictive model is trained on the `train.tsv` data and evaluated on `test.tsv`. To account for computational complexity, model development begins with a representative sample of the training data.
 
 Model performance is evaluated using **Root Mean Squared Logarithmic Error (RMSLE)** to penalize underestimation more than overestimation and handle large-scale price ranges effectively.
 
-## 📊 Evaluation Metric
+##  Evaluation Metric
 
-\[
-\varepsilon = \sqrt{ \frac{1}{N} \sum_{i=1}^{N} \left( \log(\hat{p}_i + 1) - \log(p_i + 1) \right)^2 }
-\]
+**RMSLE Formula:**
+
+`ε = sqrt( (1/N) * Σ[ log(p̂ᵢ + 1) - log(pᵢ + 1) ]² )`
 
 Where:
-- \( \hat{p}_i \) is the predicted price  
-- \( p_i \) is the actual price  
-- \( N \) is the number of predictions
+- p̂ᵢ is the predicted price  
+- pᵢ is the actual price  
+- N is the number of predictions
+
