@@ -1,2 +1,40 @@
-# Predicting-sale-price
-In this project, I predict the sale price of a listing based on information a seller provides for this listing. Online marketplaces like Amazon provide this kind of insight. The data contains text descriptions of the products, including details like product category name, brand name, and item condition.
+# 🧾 Product Price Prediction from Marketplace Listings
+
+This project focuses on building a machine learning model to predict the sale price of online product listings using structured and unstructured data provided by sellers. Accurately estimating product prices is a challenging task influenced by subtle differences in product descriptions, conditions, and categories—particularly in competitive online marketplaces.
+
+## 🎯 Objective
+
+The goal is to predict the final sale price of items based on features such as item condition, category, brand name, shipping information, and text descriptions. This task simulates a real-world application faced by e-commerce platforms when setting or suggesting optimal prices.
+
+## 📦 Dataset
+
+The dataset consists of two tab-delimited files:
+
+- `train.tsv`: Contains ~700,000 labeled listings with sale prices.
+- `test.tsv`: Contains ~3.5 million listings without prices (to be predicted).
+
+Each listing includes:
+- `name`: Product title (with price mentions removed and replaced by `[rm]`).
+- `item_condition_id`: Condition of the item.
+- `category_name`: Hierarchical category of the product.
+- `brand_name`: Brand of the item.
+- `price`: **Target variable** (only in `train.tsv`).
+- `shipping`: Indicates who pays for shipping (0 = buyer, 1 = seller).
+- `item_description`: Detailed product description (also cleaned of prices).
+
+## 🧠 Modeling
+
+The predictive model is trained on the `train.tsv` data and evaluated on `test.tsv`. To account for computational complexity, model development begins with a representative sample of the training data.
+
+Model performance is evaluated using **Root Mean Squared Logarithmic Error (RMSLE)** to penalize underestimation more than overestimation and handle large-scale price ranges effectively.
+
+## 📊 Evaluation Metric
+
+\[
+\varepsilon = \sqrt{ \frac{1}{N} \sum_{i=1}^{N} \left( \log(\hat{p}_i + 1) - \log(p_i + 1) \right)^2 }
+\]
+
+Where:
+- \( \hat{p}_i \) is the predicted price  
+- \( p_i \) is the actual price  
+- \( N \) is the number of predictions
